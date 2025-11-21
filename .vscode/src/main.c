@@ -11,9 +11,9 @@ char expr[256];
 
 scanf("%s", expr);
 
-    int tab[200];     // tableau final
-    int tabIndex = 0; // position dans le tableau
-    int number = 0;   // pour reconstituer les nombres
+    int tab[200];    
+    int tabIndex = 0; 
+    int number = 0;   
 
     for (int i = 0; expr[i] != '\0'; i++) {
 
@@ -21,8 +21,8 @@ scanf("%s", expr);
             number = number * 10 + (expr[i] - '0');
         }
         else {
-            tab[tabIndex++] = number;  // on stocke le nombre
-            number = 0;                // reset
+            tab[tabIndex++] = number;  //  stocke le nombre
+            number = 0;               
 
             // encodage des opérateurs
             if (expr[i] == '+') tab[tabIndex++] = -1;
