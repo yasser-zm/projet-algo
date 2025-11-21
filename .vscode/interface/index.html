@@ -4,21 +4,51 @@
     <meta charset="UTF-8">
     <title>Special Calculator</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .calculator { display: grid; grid-template-columns: repeat(4, 60px); gap: 5px; }
+        input { grid-column: span 4; height: 40px; text-align: right; font-size: 18px; }
+        button { height: 40px; font-size: 18px; }
+    </style>
 </head>
 <body>
 
     <h1>Special Calculator</h1>
 
     <div class="calculator">
-        <input type="text" id="display" placeholder="0">
+        <input type="text" id="display" placeholder="0" readonly>
 
         <button>1</button>
         <button>2</button>
         <button>3</button>
-
         <button>+</button>
         <button>=</button>
     </div>
 
+    <script>
+        const display = document.getElementById('display');
+        const buttons = document.querySelectorAll('button');
+        let current = '';
+
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const value = btn.textContent;
+
+                if (value === '=') {
+                    try {
+                        display.value = eval(current);
+                        current = display.value;
+                    } catch {
+                        display.value = 'Errorrrrr';
+                        current = '';
+                    }
+                } else {
+                    current += value;
+                    display.value = current;
+                }
+            });
+        });
+    </script>
+
 </body>
 </html>
+
