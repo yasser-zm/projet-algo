@@ -2,14 +2,12 @@
 
 int main() {
 
-
     printf("Hello calculator!\n");
 
-char expr[256];
+    char expr[256];
 
-    printf("tap your  full operation  \n");
-
-scanf("%s", expr);
+    printf("Tap your full operation:\n");
+    scanf("%s", expr);
 
     int tab[200];    
     int tabIndex = 0; 
@@ -21,7 +19,7 @@ scanf("%s", expr);
             number = number * 10 + (expr[i] - '0');
         }
         else {
-            tab[tabIndex++] = number;  //  stocke le nombre
+            tab[tabIndex++] = number;  // stocke le nombre
             number = 0;               
 
             // encodage des opérateurs
@@ -35,11 +33,20 @@ scanf("%s", expr);
 
     // Ajouter le dernier nombre
     tab[tabIndex++] = number;
-  printf("Tableau encodé :\n");
+
+    // Affichage du tableau encodé
+    printf("Tableau encodé :\n");
     for (int i = 0; i < tabIndex; i++) {
         printf("%d ", tab[i]);
     }
     printf("\n");
+
+   
+    int sum = 0;
+    for (int i = 0; i < tabIndex; i++) {
+        if (tab[i] > 0) sum += tab[i];  // on additionne seulement les nombres
+    }
+    printf("Somme des nombres = %d\n", sum);
 
     return 0;
 }
